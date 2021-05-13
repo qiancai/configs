@@ -97,9 +97,6 @@ ti-community-owners:
       release-4.0:
         trusted_teams:
           - qa-release-merge
-      release-5.0-rc:
-        trusted_teams:
-          - qa-release-merge
       release-5.0:
         trusted_teams:
           - qa-release-merge
@@ -144,9 +141,6 @@ ti-community-owners:
       release-4.0:
         trusted_teams:
           - qa-release-merge
-      release-5.0-rc:
-        trusted_teams:
-          - qa-release-merge
       release-5.0:
         trusted_teams:
           - qa-release-merge
@@ -164,9 +158,6 @@ ti-community-owners:
         trusted_teams:
           - qa-release-merge
       release-4.0:
-        trusted_teams:
-          - qa-release-merge
-      release-5.0-rc:
         trusted_teams:
           - qa-release-merge
       release-5.0:
@@ -325,7 +316,6 @@ ti-community-label:
       - 'needs-cherry-pick-3.0'
       - 'needs-cherry-pick-3.1'
       - 'needs-cherry-pick-4.0'
-      - 'needs-cherry-pick-5.0-rc'
       - 'needs-cherry-pick-5.0'
       - 'wontfix'
       - 'do-not-merge/cherry-pick-not-approved'
@@ -359,7 +349,6 @@ ti-community-label:
       - 'needs-cherry-pick-3.0'
       - 'needs-cherry-pick-3.1'
       - 'needs-cherry-pick-4.0'
-      - 'needs-cherry-pick-5.0-rc'
       - 'needs-cherry-pick-5.0'
       - 'proposal'
       - 'release-note'
@@ -390,11 +379,11 @@ ti-community-label:
       - 'good-first-issue'
       - 'hacktoberfest-accepted'
       - 'help-wanted'
-      - 'needs-cherry-pick-2.1'
-      - 'needs-cherry-pick-3.0'
-      - 'needs-cherry-pick-3.1'
-      - 'needs-cherry-pick-4.0'
-      - 'needs-cherry-pick-5.0'
+      - 'needs-cherry-pick-release-2.1'
+      - 'needs-cherry-pick-release-3.0'
+      - 'needs-cherry-pick-release-3.1'
+      - 'needs-cherry-pick-release-4.0'
+      - 'needs-cherry-pick-release-5.0'
       - 'needs-cherry-pick-master'
       - 'question'
       - 'require-LGT1'
@@ -426,8 +415,8 @@ ti-community-label:
       - 'requires-followup'
       - 'good-first-issue'
       - 'help-wanted'
-      - 'needs-cherry-pick-1.0'
-      - 'needs-cherry-pick-2.0'
+      - 'needs-cherry-pick-release-1.0'
+      - 'needs-cherry-pick-release-2.0'
       - 'needs-cherry-pick-master'
       - 'question'
       - 'require-LGT1'
@@ -461,8 +450,8 @@ ti-community-label:
       - 'good-first-issue'
       - 'hacktoberfest-accepted'
       - 'help-wanted'
-      - 'needs-cherry-pick-1.0'
-      - 'needs-cherry-pick-1.1'
+      - 'needs-cherry-pick-release-1.0'
+      - 'needs-cherry-pick-release-1.1'
       - 'needs-cherry-pick-master'
       - 'question'
       - 'require-LGT1'
@@ -514,8 +503,8 @@ ti-community-label:
       - 'high-performance'
       - 'hptc'
       - 'javascript'
-      - 'needs-cherry-pick-1.0'
-      - 'needs-cherry-pick-2.0'
+      - 'needs-cherry-pick-release-1.0'
+      - 'needs-cherry-pick-release-2.0'
       - 'needs-update-dm-ansible'
       - 'needs-update-docs'
       - 'needs-update-release-note'
@@ -555,10 +544,9 @@ ti-community-label:
       - 'duplicate'
       - 'good first issue'
       - 'invalid'
-      - 'needs-cherry-pick-3.1'
-      - 'needs-cherry-pick-4.0'
-      - 'needs-cherry-pick-5.0'
-      - 'needs-cherry-pick-5.0-rc'
+      - 'needs-cherry-pick-release-3.1'
+      - 'needs-cherry-pick-release-4.0'
+      - 'needs-cherry-pick-release-5.0'
       - 'question'
       - 'release-blocker'
       - 'wontfix'
@@ -588,9 +576,8 @@ ti-community-label:
       - 'good-first-issue'
       - 'hacktoberfest'
       - 'internal-test'
-      - 'needs-cherry-pick-4.0'
-      - 'needs-cherry-pick-5.0'
-      - 'needs-cherry-pick-5.0-rc'
+      - 'needs-cherry-pick-release-4.0'
+      - 'needs-cherry-pick-release-5.0'
       - 'ptal'
       - 'question'
       - 'release-blocker'
@@ -848,7 +835,36 @@ ti-community-blunderbuss:
       - ti-chi-bot
       - ti-srebot
       # Inactive reviewers for chaos-mesh.
-      # TBD
+      - 70data
+      - Andrewmatilde
+      - anotherrachel
+      - caniszczyk
+      - huangxiuyan
+      - Illyrix
+      - jackysp
+      - KivenChen
+      - lucklove
+      - mahjonp
+      - mapleFU
+      - ming535
+      - mrigger
+      - mz921
+      - oraluben
+      - queenypingcap
+      - siddontang
+      - sjwsl
+      - thelinuxfoundation
+      - vincent178
+      - WT-Liu
+      - xuechunL
+      - yikeke
+      - YiniXu9506
+      - Yisaer
+      - you06
+      - zhanghuidinah
+      - zhangysh1995
+      - zhouqiang
+      - zyguan
   - repos:
       - pingcap/docs
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
@@ -899,6 +915,7 @@ ti-community-blunderbuss:
       - junlan-zhang
       - glkappe
       - Joyinqin
+      - qiancai
   - repos:
       - pingcap/docs-cn
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
@@ -949,6 +966,7 @@ ti-community-blunderbuss:
       - junlan-zhang
       - glkappe
       - Joyinqin
+      - qiancai
   - repos:
       - pingcap/docs-dm
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
@@ -999,6 +1017,7 @@ ti-community-blunderbuss:
       - junlan-zhang
       - glkappe
       - Joyinqin
+      - qiancai
   - repos:
       - pingcap/docs-tidb-operator
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
@@ -1009,6 +1028,7 @@ ti-community-blunderbuss:
       - ti-srebot
       # Inactive reviewers for docs-tidb-operator.
       - lilin90
+      - yikeke
       - breeswish
       - CaitinChen
       - csuzhangxc
@@ -1058,6 +1078,11 @@ ti-community-tars:
       - pingcap/ticdc
       - chaos-mesh/chaos-mesh
     only_when_label: "status/can-merge"
+    exclude_labels:
+      - needs-rebase
+      - do-not-merge/hold
+      - do-not-merge/work-in-progress
+      - do-not-merge/cherry-pick-not-approved
     message: |
       Your PR was out of date, I have automatically updated it for you.
 
@@ -1071,11 +1096,16 @@ ti-community-tars:
       - pingcap/tiup
       - pingcap/dm
       - pingcap/tidb-tools
-      - pingcap/br
+      - pingcap/tidb-dashboard
       - ti-community-infra/test-live
       - ti-community-infra/ti-challenge-bot
       - ti-community-infra/ti-sync-bot
     only_when_label: "status/can-merge"
+    exclude_labels:
+      - needs-rebase
+      - do-not-merge/hold
+      - do-not-merge/work-in-progress
+      - do-not-merge/cherry-pick-not-approved
     message: |
       Your PR was out of date, I have automatically updated it for you.
 
@@ -1088,11 +1118,6 @@ ti-community-label-blocker:
       - pingcap/docs-cn
       - pingcap/docs-dm
       - pingcap/docs-tidb-operator
-      - pingcap/dumpling
-      - pingcap/dm
-      - pingcap/tidb-tools
-      - pingcap/ticdc
-      - pingcap/br
       - pingcap/docs
       - pingcap/docs-cn
       - pingcap/docs-dm
@@ -1119,6 +1144,34 @@ ti-community-label-blocker:
           - qa-release-merge
         trusted_users:
           - ti-chi-bot
+  - repos:
+      - pingcap/dumpling
+      - pingcap/dm
+      - pingcap/tidb-tools
+      - pingcap/ticdc
+      - pingcap/br
+    block_labels:
+      - regex: "^status/LGT[\\d]+$"
+        actions:
+          - labeled
+          - unlabeled
+        trusted_users:
+          - ti-chi-bot
+      - regex: "^status/can-merge$"
+        actions:
+          - labeled
+          - unlabeled
+        trusted_users:
+          - ti-chi-bot
+      - regex: "^cherry-pick-approved$"
+        actions:
+          - labeled
+          - unlabeled
+        trusted_teams:
+          - qa-release-merge
+        trusted_users:
+          - ti-chi-bot
+          - lonng
 
 ti-community-contribution:
   - repos:
@@ -1147,6 +1200,13 @@ ti-community-cherrypicker:
       - status/LGT3
   - repos:
       - tikv/pd
+      - pingcap/ticdc
+      - pingcap/dm
+      - pingcap/br
+      - pingcap/docs-cn
+      - pingcap/docs
+      - pingcap/docs-dm
+      - pingcap/docs-tidb-operator
     label_prefix: needs-cherry-pick-
     picked_label_prefix: type/cherry-pick-for-
     allow_all: true
