@@ -31,6 +31,8 @@ ti-community-lgtm:
       - pingcap/ticdc
       - pingcap/br
       - chaos-mesh/chaos-mesh
+      - chaos-mesh/website
+      - chaos-mesh/website-zh
     review_acts_as_lgtm: true
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
 
@@ -63,6 +65,8 @@ ti-community-merge:
       - pingcap/ticdc
       - pingcap/br
       - chaos-mesh/chaos-mesh
+      - chaos-mesh/website
+      - chaos-mesh/website-zh
     store_tree_hash: true
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
 
@@ -228,6 +232,13 @@ ti-community-owners:
   - repos:
       - chaos-mesh/chaos-mesh
     default_require_lgtm: 2
+    use_github_permission: true
+    sig_endpoint: https://bots.tidb.io/ti-community-bot
+    require_lgtm_label_prefix: require-LGT
+  - repos:
+      - chaos-mesh/website
+      - chaos-mesh/website-zh
+    default_require_lgtm: 1
     use_github_permission: true
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
@@ -615,6 +626,27 @@ ti-community-label:
       - 'require-LGT3'
     exclude_labels:
       - status/can-merge
+  - repos:
+      - chaos-mesh/website
+      - chaos-mesh/website-zh
+    prefixes:
+      - closed
+      - priority
+      - status
+      - suggestion
+      - translation
+      - type
+    additional_labels:
+      - 'good-first-issue'
+      - 'help-wanted'
+      - 'docs'
+      - 'missing-translation-status'
+      - 'require-LGT1'
+      - 'require-LGT2'
+      - 'require-LGT3'
+      - 'requires-followup'
+    exclude_labels:
+      - status/can-merge
 
 ti-community-autoresponder:
   - repos:
@@ -666,27 +698,16 @@ ti-community-blunderbuss:
       - tikv/pd
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Maintainers
-      - siddontang
-      - sunxiaoguang
-      - winkyao
-      - zhangjinpeng1987
-      - lidaobing
-      - fredchenbj
-      - BusyJay
-      # Inactive reviewers
-      - overvenus
-      - Connor1996
-      - qiuyesuifeng
-      - huachaohuang
-      - howardlau1999
-      - xhebox
-      - Luffbee
-      - shafreeck
+    include_reviewers:
+      # Tech Leaders
+      - rleungx
+      # Committers
+      - nolouch
+      - disksing
+      - lhy1024
+      - Yisaer
+      - HunDunDM
+      - JmPotato
   - repos:
       - pingcap/tidb-operator
       - pingcap/tiup
@@ -742,27 +763,12 @@ ti-community-blunderbuss:
       - pingcap/dm
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for dm.
-      - amyangfei
-      - csuzhangxc
+    include_reviewers:
+      - Ehco1996
       - glorv
-      - IANTHEREAL
-      - leoppro
-      - lonng
-      - WangXiangUSTC
-      - YuJuncens
-      - overvenus
-      - july2993
-      - suzaku
-      - Little-Wallace
-      - holys
-      - liuzix
-      - iamxy
-      - tiancaiamao
+      - GMHDBJD
+      - lance6716
+      - lichunzhu
   - repos:
       - pingcap/tidb-tools
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
@@ -1123,6 +1129,8 @@ ti-community-label-blocker:
       - pingcap/docs-dm
       - pingcap/docs-tidb-operator
       - chaos-mesh/chaos-mesh
+      - chaos-mesh/website
+      - chaos-mesh/website-zh
     block_labels:
       - regex: "^status/LGT[\\d]+$"
         actions:
@@ -1182,6 +1190,8 @@ ti-community-contribution:
       - pingcap/ticdc
       - pingcap/br
       - chaos-mesh/chaos-mesh
+      - chaos-mesh/website
+      - chaos-mesh/website-zh
       - pingcap/docs
       - pingcap/docs-cn
       - pingcap/docs-dm
@@ -1203,6 +1213,16 @@ ti-community-cherrypicker:
       - pingcap/ticdc
       - pingcap/dm
       - pingcap/br
+    label_prefix: needs-cherry-pick-
+    picked_label_prefix: type/cherry-pick-for-
+    allow_all: true
+    create_issue_on_conflict: false
+    excludeLabels:
+      - status/can-merge
+      - status/LGT1
+      - status/LGT2
+      - status/LGT3
+  - repos:
       - pingcap/docs-cn
       - pingcap/docs
       - pingcap/docs-dm
@@ -1216,3 +1236,12 @@ ti-community-cherrypicker:
       - status/LGT1
       - status/LGT2
       - status/LGT3
+      - missing-translation-status
+      - translation/done
+      - translation/doing
+      - translation/from-docs-cn
+      - translation/from-docs
+      - translation/from-en
+      - translation/from-zh
+      - translation/no-need
+      - translation/welcome
