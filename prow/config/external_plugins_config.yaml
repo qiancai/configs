@@ -710,6 +710,16 @@ ti-community-blunderbuss:
       - JmPotato
   - repos:
       - pingcap/tidb-operator
+    pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
+    max_request_count: 2
+    include_reviewers:
+      - DanielZhangQD
+      - july2993
+      - handlerww
+      - csuzhangxc
+      - liubog2008
+      - better0332
+  - repos:
       - pingcap/tiup
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
@@ -737,28 +747,10 @@ ti-community-blunderbuss:
       - pingcap/dumpling
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for dumpling.
-      - amyangfei
-      - csuzhangxc
-      - glorv
-      - GMHDBJD
-      - IANTHEREAL
-      - leoppro
-      - lonng
-      - WangXiangUSTC
-      - YuJuncens
-      - overvenus
-      - july2993
-      - suzaku
-      - Little-Wallace
-      - holys
-      - liuzix
-      - iamxy
-      - tiancaiamao
+    include_reviewers:
+      - lance6716
+      - lichunzhu
+      - kennytm
   - repos:
       - pingcap/dm
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
@@ -773,308 +765,87 @@ ti-community-blunderbuss:
       - pingcap/tidb-tools
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for tidb-tools.
-      - csuzhangxc
-      - IANTHEREAL
-      - lonng
-      - WangXiangUSTC
-      - july2993
-      - suzaku
-      - holys
-      - iamxy
-      - tiancaiamao
+    include_reviewers:
+      - glorv
+      - GMHDBJD
+      - lance6716
+      - lichunzhu
+      - kennytm
+      - overvenus
+      - amyangfei
+      - liuzix
+      - 3pointer
+      - Little-Wallace
   - repos:
       - pingcap/ticdc
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for ticdc.
-      - csuzhangxc
-      - glorv
-      - GMHDBJD
-      - IANTHEREAL
+    include_reviewers:
+      - overvenus
+      - amyangfei
+      - leoppro
+      - liuzix
       - lonng
-      - WangXiangUSTC
-      - YuJuncens
-      - july2993
-      - suzaku
-      - Little-Wallace
-      - holys
-      - iamxy
-      - tiancaiamao
+      - JinLingChristopher
+      - ben1009
+      - asddongmen
   - repos:
       - pingcap/br
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for br.
-      - amyangfei
-      - csuzhangxc
-      - GMHDBJD
-      - IANTHEREAL
-      - leoppro
-      - lonng
-      - WangXiangUSTC
-      - YuJuncens
-      - july2993
-      - suzaku
-      - holys
-      - liuzix
-      - iamxy
-      - tiancaiamao
+    include_reviewers:
+      - glorv
+      - gozssky
+      - lichunzhu
+      - kennytm
+      - overvenus
+      - 3pointer
+      - Little-Wallace
+      - zwj-coder
+      - Leavrth
   - repos:
       - chaos-mesh/chaos-mesh
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for chaos-mesh.
-      - 70data
+    include_reviewers:
+      - cwen0
+      - YangKeao
+      - Gallardot
+      - g1eny0ung
+      - fewdan
+      - yeya24
+      - Colstuwjx
+      - Yiyiyimu
       - Andrewmatilde
-      - anotherrachel
-      - caniszczyk
-      - huangxiuyan
-      - Illyrix
-      - jackysp
-      - KivenChen
-      - lucklove
-      - mahjonp
-      - mapleFU
-      - ming535
-      - mrigger
-      - mz921
-      - oraluben
-      - queenypingcap
-      - siddontang
-      - sjwsl
-      - thelinuxfoundation
-      - vincent178
-      - WT-Liu
-      - xuechunL
-      - yikeke
-      - YiniXu9506
-      - Yisaer
-      - you06
-      - zhanghuidinah
-      - zhangysh1995
-      - zhouqiang
-      - zyguan
+      - WangXiangUSTC
+      - ethercflow
+      - STRRL
+      - Hexilee
+      - AsterNighT
   - repos:
       - pingcap/docs
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 1
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for docs.
-      - lilin90
-      - yikeke
-      - breeswish
-      - CaitinChen
-      - csuzhangxc
-      - dcalvin
-      - jackysp
-      - kissmydb
-      - lichunzhu
-      - ran-huang
-      - SunRunAway
-      - tangenta
-      - toutdesuite
-      - WangXiangUSTC
-      - YiniXu9506
-      - overvenus
-      - DanielZhangQD
-      - cofyc
-      - queenypingcap
-      - morgo
-      - lance6716
-      - nullnotnil
-      - CharLotteiu
-      - dragonly
-      - anotherrachel
-      - GMHDBJD
-      - lysu
-      - superlzs0476
-      - tiancaiamao
-      - crazycs520
-      - zimulala
-      - 3pointer
-      - amyangfei
-      - lucklove
-      - aylei
-      - weekface
-      - Yisaer
-      - ericsyh
-      - junlan-zhang
-      - glkappe
-      - Joyinqin
-      - qiancai
+    include_reviewers:
+      - TomShawn
   - repos:
       - pingcap/docs-cn
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 1
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for docs-cn.
-      - lilin90
-      - yikeke
-      - breeswish
-      - CaitinChen
-      - csuzhangxc
-      - dcalvin
-      - jackysp
-      - kissmydb
-      - lichunzhu
-      - ran-huang
-      - SunRunAway
-      - tangenta
-      - toutdesuite
-      - WangXiangUSTC
-      - YiniXu9506
-      - overvenus
-      - DanielZhangQD
-      - cofyc
-      - queenypingcap
-      - morgo
-      - lance6716
-      - nullnotnil
-      - CharLotteiu
-      - dragonly
-      - anotherrachel
-      - GMHDBJD
-      - lysu
-      - superlzs0476
-      - tiancaiamao
-      - crazycs520
-      - zimulala
-      - 3pointer
-      - amyangfei
-      - lucklove
-      - aylei
-      - weekface
-      - Yisaer
-      - ericsyh
-      - junlan-zhang
-      - glkappe
-      - Joyinqin
-      - qiancai
+    include_reviewers:
+      - TomShawn
   - repos:
       - pingcap/docs-dm
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 1
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for docs-dm.
-      - lilin90
-      - yikeke
-      - breeswish
-      - CaitinChen
-      - csuzhangxc
-      - dcalvin
-      - jackysp
-      - kissmydb
-      - lichunzhu
-      - ran-huang
-      - SunRunAway
-      - tangenta
-      - toutdesuite
-      - WangXiangUSTC
-      - YiniXu9506
-      - overvenus
-      - DanielZhangQD
-      - cofyc
-      - queenypingcap
-      - TomShawn
-      - morgo
-      - lance6716
-      - nullnotnil
-      - dragonly
-      - anotherrachel
-      - GMHDBJD
-      - lysu
-      - superlzs0476
-      - tiancaiamao
-      - crazycs520
-      - zimulala
-      - 3pointer
-      - amyangfei
-      - lucklove
-      - aylei
-      - weekface
-      - Yisaer
-      - ericsyh
-      - junlan-zhang
-      - glkappe
-      - Joyinqin
-      - qiancai
+    include_reviewers:
+      - CharLotteiu
   - repos:
       - pingcap/docs-tidb-operator
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 1
-    exclude_reviewers:
-      # Bots
-      - ti-chi-bot
-      - ti-srebot
-      # Inactive reviewers for docs-tidb-operator.
-      - lilin90
-      - yikeke
-      - breeswish
-      - CaitinChen
-      - csuzhangxc
-      - dcalvin
-      - jackysp
-      - kissmydb
-      - lichunzhu
-      - ran-huang
-      - SunRunAway
-      - tangenta
-      - toutdesuite
-      - WangXiangUSTC
-      - YiniXu9506
-      - overvenus
-      - DanielZhangQD
-      - cofyc
-      - queenypingcap
-      - TomShawn
-      - morgo
-      - lance6716
-      - nullnotnil
-      - CharLotteiu
-      - dragonly
-      - anotherrachel
-      - GMHDBJD
-      - lysu
-      - superlzs0476
-      - tiancaiamao
-      - crazycs520
-      - zimulala
-      - 3pointer
-      - amyangfei
-      - lucklove
-      - aylei
-      - weekface
-      - Yisaer
-      - ericsyh
-      - junlan-zhang
-      - glkappe
-      - Joyinqin
+    include_reviewers:
+      - qiancai 
 
 ti-community-tars:
   - repos:

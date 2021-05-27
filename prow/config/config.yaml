@@ -22,7 +22,6 @@ branch-protection:
                 contexts:
                   - "DCO"
                   - "statics"
-                  - "idc-jenkins-ci-pd/check_release_note"
                   - "idc-jenkins-ci/test"
                   - "idc-jenkins-ci/build"
                 strict: true
@@ -31,7 +30,6 @@ branch-protection:
               required_status_checks:
                 contexts:
                   - "DCO"
-                  - "idc-jenkins-ci-pd/check_release_note"
                   - "idc-jenkins-ci/test"
                   - "idc-jenkins-ci/build"
                 strict: true
@@ -40,7 +38,6 @@ branch-protection:
               required_status_checks:
                 contexts:
                   - "DCO"
-                  - "idc-jenkins-ci-pd/check_release_note"
                   - "idc-jenkins-ci/test"
                   - "idc-jenkins-ci/build"
                 strict: true
@@ -50,7 +47,6 @@ branch-protection:
                 contexts:
                   - "DCO"
                   - "statics"
-                  - "idc-jenkins-ci-pd/check_release_note"
                   - "idc-jenkins-ci/test"
                   - "idc-jenkins-ci/build"
                 strict: true
@@ -60,7 +56,6 @@ branch-protection:
                 contexts:
                   - "DCO"
                   - "statics"
-                  - "idc-jenkins-ci-pd/check_release_note"
                   - "idc-jenkins-ci/test"
                   - "idc-jenkins-ci/build"
                 strict: true
@@ -411,8 +406,6 @@ branch-protection:
                   - "Lint"
                   - "idc-jenkins-ci-dm/compatibility_test"
                   - "idc-jenkins-ci-dm/test"
-                  - "Test binlog 999999"
-                  - "upstream-database-switch"
                   - "license/cla"
                 strict: true
             release-2.0:
@@ -423,8 +416,6 @@ branch-protection:
                   - "Lint"
                   - "idc-jenkins-ci-dm/compatibility_test"
                   - "idc-jenkins-ci-dm/test"
-                  - "Test binlog 999999"
-                  - "upstream-database-switch"
                   - "license/cla"
                 strict: true
         tidb-tools:
@@ -704,10 +695,10 @@ plank:
         path_strategy: explicit
       gcs_credentials_secret: gcs-credentials
       utility_images:
-        clonerefs: gcr.io/k8s-prow/clonerefs:v20210409-7d5e552c49
-        entrypoint: gcr.io/k8s-prow/entrypoint:v20210409-7d5e552c49
-        initupload: gcr.io/k8s-prow/initupload:v20210409-7d5e552c49
-        sidecar: gcr.io/k8s-prow/sidecar:v20210409-7d5e552c49
+        clonerefs: gcr.io/k8s-prow/clonerefs:v20210514-64850e516d
+        entrypoint: gcr.io/k8s-prow/entrypoint:v20210514-64850e516d
+        initupload: gcr.io/k8s-prow/initupload:v20210514-64850e516d
+        sidecar: gcr.io/k8s-prow/sidecar:v20210514-64850e516d
 
 tide:
   sync_period: 2m
@@ -767,7 +758,6 @@ tide:
         - status/can-merge
         - "dco-signoff: yes"
       missingLabels:
-        - do-not-merge/release-note-label-needed
         - do-not-merge/hold
         - do-not-merge/work-in-progress
         - do-not-merge/blocked-paths
@@ -851,7 +841,6 @@ tide:
           pd:
             required-contexts:
               - "DCO"
-              - "idc-jenkins-ci-pd/check_release_note"
               - "idc-jenkins-ci-pd/integration-common-test"
               - "idc-jenkins-ci-pd/integration-compatibility-test"
               - "idc-jenkins-ci-pd/integration-ddl-test"
