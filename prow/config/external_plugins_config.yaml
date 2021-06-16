@@ -4,12 +4,11 @@ command_help_link: https://prow.tidb.io/command-help
 
 ti-community-lgtm:
   - repos:
-      - ti-community-infra/test-live
+      - ti-community-infra/test-prod
       - ti-community-infra/tichi
       - ti-community-infra/configs
       - ti-community-infra/ti-community-bot
       - ti-community-infra/ti-challenge-bot
-      - ti-community-infra/ti-sync-bot
       - ti-community-infra/rfcs
       - ti-community-infra/devstats
       - ti-community-infra/devstats-dev-guide
@@ -33,17 +32,15 @@ ti-community-lgtm:
       - chaos-mesh/chaos-mesh
       - chaos-mesh/website
       - chaos-mesh/website-zh
-    review_acts_as_lgtm: true
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
 
 ti-community-merge:
   - repos:
-      - ti-community-infra/test-live
+      - ti-community-infra/test-prod
       - ti-community-infra/tichi
       - ti-community-infra/configs
       - ti-community-infra/ti-challenge-bot
       - ti-community-infra/ti-community-bot
-      - ti-community-infra/ti-sync-bot
       - ti-community-infra/rfcs
       - ti-community-infra/devstats
       - ti-community-infra/devstats-dev-guide
@@ -72,11 +69,10 @@ ti-community-merge:
 
 ti-community-owners:
   - repos:
-      - ti-community-infra/test-live
+      - ti-community-infra/test-prod
       - ti-community-infra/tichi
       - ti-community-infra/configs
       - ti-community-infra/ti-community-bot
-      - ti-community-infra/ti-sync-bot
       - ti-community-infra/ti-challenge-bot
       - ti-community-infra/rfcs
       - ti-community-infra/devstats
@@ -102,6 +98,9 @@ ti-community-owners:
         trusted_teams:
           - qa-release-merge
       release-5.0:
+        trusted_teams:
+          - qa-release-merge
+      release-5.1:
         trusted_teams:
           - qa-release-merge
   - repos:
@@ -148,6 +147,9 @@ ti-community-owners:
       release-5.0:
         trusted_teams:
           - qa-release-merge
+      release-5.1:
+        trusted_teams:
+          - qa-release-merge
   - repos:
       - pingcap/tidb
     trusted_teams:
@@ -165,6 +167,9 @@ ti-community-owners:
         trusted_teams:
           - qa-release-merge
       release-5.0:
+        trusted_teams:
+          - qa-release-merge
+      release-5.1:
         trusted_teams:
           - qa-release-merge
   - repos:
@@ -245,12 +250,11 @@ ti-community-owners:
 
 ti-community-label:
   - repos:
-      - ti-community-infra/test-live
+      - ti-community-infra/test-prod
       - ti-community-infra/tichi
       - ti-community-infra/configs
       - ti-community-infra/ti-community-bot
       - ti-community-infra/ti-challenge-bot
-      - ti-community-infra/ti-sync-bot
       - ti-community-infra/devstats
       - ti-community-infra/devstats-dev-guide
     prefixes:
@@ -302,6 +306,7 @@ ti-community-label:
       - 'needs-cherry-pick-release-3.1'
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
+      - 'needs-cherry-pick-release-5.1'
       - 'release-note'
       - 'require-LGT1'
       - 'wontfix'
@@ -328,6 +333,7 @@ ti-community-label:
       - 'needs-cherry-pick-3.1'
       - 'needs-cherry-pick-4.0'
       - 'needs-cherry-pick-5.0'
+      - 'needs-cherry-pick-5.1'
       - 'wontfix'
       - 'do-not-merge/cherry-pick-not-approved'
     exclude_labels:
@@ -361,6 +367,7 @@ ti-community-label:
       - 'needs-cherry-pick-3.1'
       - 'needs-cherry-pick-4.0'
       - 'needs-cherry-pick-5.0'
+      - 'needs-cherry-pick-5.1'
       - 'proposal'
       - 'release-note'
       - 'require-LGT3'
@@ -403,6 +410,7 @@ ti-community-label:
       - 'special-week'
       - 'v4.0'
       - 'v5.0'
+      - 'v5.1'
       - 'for-future-release'
       - 'requires-version-specific-changes'
       - 'website'
@@ -558,6 +566,7 @@ ti-community-label:
       - 'needs-cherry-pick-release-3.1'
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
+      - 'needs-cherry-pick-release-5.1'
       - 'question'
       - 'release-blocker'
       - 'wontfix'
@@ -589,6 +598,7 @@ ti-community-label:
       - 'internal-test'
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
+      - 'needs-cherry-pick-release-5.1'
       - 'ptal'
       - 'question'
       - 'release-blocker'
@@ -650,7 +660,7 @@ ti-community-label:
 
 ti-community-autoresponder:
   - repos:
-      - ti-community-infra/test-live
+      - ti-community-infra/test-prod
     auto_responds:
       - regex: "(?mi)^/ping\\s*$"
         message: "pong"
@@ -662,6 +672,13 @@ ti-community-autoresponder:
           It seems you want to merge this PR, I will help you trigger all the tests:
 
           /run-all-tests
+      - regex: "(?i)^/LGTM"
+        message: |
+          Please use GitHub review feature instead of `/lgtm [cancel]` when you want to submit review to the pull request.
+          For how to use GitHub review feature, see also [this document](https://docs.github.com/en/github/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews) provided by GitHub.
+
+          For the reason we drop support to the commands, see also [this page](https://book.prow.tidb.io/#/en/plugins/lgtm?id=why-does-lgtm-cancel-take-no-effect-anymore).
+          This reply is being used as a temporary reply during the migration of review process and will be removed on July 1st.
   - repos:
       - tikv/tikv
     auto_responds:
@@ -674,15 +691,48 @@ ti-community-autoresponder:
           You only need to trigger `/merge` once, and if the CI test fails, you just re-trigger the test that failed and the bot will merge the PR for you after the CI passes.
 
           If you have any questions about the PR merge process, please refer to [pr process](https://book.prow.tidb.io/#/en/workflows/pr).
+      - regex: "(?i)^/LGTM"
+        message: |
+          Please use GitHub review feature instead of `/lgtm [cancel]` when you want to submit review to the pull request.
+          For how to use GitHub review feature, see also [this document](https://docs.github.com/en/github/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews) provided by GitHub.
+
+          For the reason we drop support to the commands, see also [this page](https://book.prow.tidb.io/#/en/plugins/lgtm?id=why-does-lgtm-cancel-take-no-effect-anymore).
+          This reply is being used as a temporary reply during the migration of review process and will be removed on July 1st.
+  - repos:
+    - tikv/community
+    - pingcap/tidb-dashboard
+    - pingcap/community
+    - pingcap/tidb-operator
+    - pingcap/tiup
+    - pingcap/tidb
+    - pingcap/docs
+    - pingcap/docs-cn
+    - pingcap/docs-dm
+    - pingcap/docs-tidb-operator
+    - pingcap/dumpling
+    - pingcap/dm
+    - pingcap/tidb-tools
+    - pingcap/ticdc
+    - pingcap/br
+    - chaos-mesh/chaos-mesh
+    - chaos-mesh/website
+    - chaos-mesh/website-zh
+    auto_responds:
+      - regex: "(?i)^/LGTM"
+        message: |
+          Please use GitHub review feature instead of `/lgtm [cancel]` when you want to submit review to the pull request.
+          For how to use GitHub review feature, see also [this document](https://docs.github.com/en/github/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews) provided by GitHub.
+
+          For the reason we drop support to the commands, see also [this page](https://book.prow.tidb.io/#/en/plugins/lgtm?id=why-does-lgtm-cancel-take-no-effect-anymore).
+          This reply is being used as a temporary reply during the migration of review process and will be removed on July 1st.
 
 ti-community-blunderbuss:
   - repos:
-      - ti-community-infra/test-live
+      - ti-community-infra/test-prod
       - ti-community-infra/tichi
       - ti-community-infra/configs
       - ti-community-infra/ti-community-bot
       - ti-community-infra/ti-challenge-bot
-      - ti-community-infra/ti-sync-bot
       - ti-community-infra/rfcs
       - ti-community-infra/devstats
       - ti-community-infra/devstats-dev-guide
@@ -874,9 +924,8 @@ ti-community-tars:
       - pingcap/dm
       - pingcap/tidb-tools
       - pingcap/tidb-dashboard
-      - ti-community-infra/test-live
+      - ti-community-infra/test-prod
       - ti-community-infra/ti-challenge-bot
-      - ti-community-infra/ti-sync-bot
     only_when_label: "status/can-merge"
     exclude_labels:
       - needs-rebase

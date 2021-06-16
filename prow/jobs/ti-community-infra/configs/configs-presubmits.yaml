@@ -7,7 +7,7 @@ presubmits:
         - ^main$
       spec:
         containers:
-          - image: gcr.io/k8s-prow/checkconfig:v20210514-64850e516d
+          - image: gcr.io/k8s-prow/checkconfig:v20210521-0713522bd8
             command:
               - /checkconfig
             args:
@@ -21,7 +21,7 @@ presubmits:
         - ^main$
       spec:
         containers:
-          - image: ticommunityinfra/tichi-check-external-plugin-config:v1.5.12
+          - image: ticommunityinfra/tichi-check-external-plugin-config:v1.5.15
             command:
               - check-external-plugin-config
             args:
@@ -33,13 +33,13 @@ presubmits:
         - ^main$
       spec:
         containers:
-          - image: gcr.io/k8s-prow/label_sync:v20210514-64850e516d
+          - image: gcr.io/k8s-prow/label_sync:v20210521-0713522bd8
             command:
               - /app/label_sync/app.binary
             args:
               - --config=prow/config/labels.yaml
               - --confirm=false
-              - --only=ti-community-infra/tichi,ti-community-infra/configs,ti-community-infra/ti-community-bot,ti-community-infra/ti-challenge-bot,ti-community-infra/ti-sync-bot,ti-community-infra/rfcs,ti-community-infra/devstats,ti-community-infra/devstats-dev-guide,pingcap/community,pingcap/docs,pingcap/docs-cn,pingcap/docs-dm,pingcap/docs-tidb-operator,tikv/community,tikv/pd,chaos-mesh/website,chaos-mesh/website-zh
+              - --only=ti-community-infra/tichi,ti-community-infra/configs,ti-community-infra/ti-community-bot,ti-community-infra/ti-challenge-bot,ti-community-infra/rfcs,ti-community-infra/devstats,ti-community-infra/devstats-dev-guide,pingcap/community,pingcap/docs,pingcap/docs-cn,pingcap/docs-dm,pingcap/docs-tidb-operator,tikv/community,tikv/pd,chaos-mesh/website,chaos-mesh/website-zh
               - --token=/etc/github/token
             volumeMounts:
               - name: github-token
@@ -57,7 +57,7 @@ presubmits:
       max_concurrency: 1
       spec:
         containers:
-          - image: golang:1.15
+          - image: golang:1.16
             command:
               - scripts/peribolos.sh
             args:

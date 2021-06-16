@@ -59,6 +59,15 @@ branch-protection:
                   - "idc-jenkins-ci/test"
                   - "idc-jenkins-ci/build"
                 strict: true
+            release-5.1:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - "DCO"
+                  - "statics"
+                  - "idc-jenkins-ci/test"
+                  - "idc-jenkins-ci/build"
+                strict: true
         tikv:
           branches:
             master:
@@ -113,6 +122,17 @@ branch-protection:
               restrictions:
                 users:
                   - ti-chi-bot
+            release-5.1:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - "DCO"
+                  - "idc-jenkins-ci/test"
+                  - "tide"
+                strict: true
+              restrictions:
+                users:
+                  - ti-chi-bot
     pingcap:
       repos:
         community:
@@ -140,7 +160,6 @@ branch-protection:
               protect: true
               required_status_checks:
                 contexts:
-                  - "pull"
                   - "pull (verify)"
                   - "pull (build)"
                   - "pull (test)"
@@ -213,6 +232,20 @@ branch-protection:
                 users:
                   - ti-chi-bot
             release-5.0:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - "idc-jenkins-ci-tidb/build"
+                  - "idc-jenkins-ci-tidb/check_dev"
+                  - "idc-jenkins-ci-tidb/check_dev_2"
+                  - "idc-jenkins-ci-tidb/check_release_note"
+                  - "license/cla"
+                  - "tide"
+                strict: true
+              restrictions:
+                users:
+                  - ti-chi-bot
+            release-5.1:
               protect: true
               required_status_checks:
                 contexts:
@@ -396,6 +429,14 @@ branch-protection:
                   - "integration-test"
                   - "license/cla"
                 strict: false
+            release-5.1:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - "unit-test"
+                  - "integration-test"
+                  - "license/cla"
+                strict: false
         dm:
           branches:
             master:
@@ -432,27 +473,24 @@ branch-protection:
                 contexts:
                   - 'idc-jenkins-ci-tidb-tools/unit-test'
                 strict: true
+            release-5.1:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - 'idc-jenkins-ci-tidb-tools/unit-test'
+                strict: true
         ticdc:
           branches:
             master:
               protect: true
               required_status_checks:
                 contexts:
-                  - 'Docker Build'
-                  - 'Make Check & Build (ubuntu-latest)'
-                  - 'Make Check & Build (macos-latest)'
-                  - 'Lint'
                   - 'idc-jenkins-ci-ticdc/check_release_note'
                   - 'idc-jenkins-ci-ticdc/integration-test'
                   - 'idc-jenkins-ci-ticdc/kafka-integration-test'
                   - 'idc-jenkins-ci-ticdc/unit-test'
                   - 'idc-jenkins-ci/leak-test'
                   - 'license/cla'
-                  - 'MySQL-integration'
-                  - 'OldValue-integration'
-                  - 'CanalJson-integration'
-                  - 'Canal-integration'
-                  - 'Avro-integration'
                 strict: true
             release-4.0:
               protect: true
@@ -473,10 +511,17 @@ branch-protection:
               protect: true
               required_status_checks:
                 contexts:
-                  - 'Docker Build'
-                  - 'Make Check & Build (ubuntu-latest)'
-                  - 'Make Check & Build (macos-latest)'
-                  - 'Lint'
+                  - 'idc-jenkins-ci-ticdc/check_release_note'
+                  - 'idc-jenkins-ci-ticdc/integration-test'
+                  - 'idc-jenkins-ci-ticdc/kafka-integration-test'
+                  - 'idc-jenkins-ci-ticdc/unit-test'
+                  - 'idc-jenkins-ci/leak-test'
+                  - 'license/cla'
+                strict: true
+            release-5.1:
+              protect: true
+              required_status_checks:
+                contexts:
                   - 'idc-jenkins-ci-ticdc/check_release_note'
                   - 'idc-jenkins-ci-ticdc/integration-test'
                   - 'idc-jenkins-ci-ticdc/kafka-integration-test'
@@ -505,6 +550,15 @@ branch-protection:
                   - 'license/cla'
                 strict: false
             release-5.0:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - 'idc-jenkins-ci-br/build'
+                  - 'idc-jenkins-ci-br/check_release_note'
+                  - 'idc-jenkins-ci-br/integration_test'
+                  - 'license/cla'
+                strict: false
+            release-5.1:
               protect: true
               required_status_checks:
                 contexts:
@@ -615,18 +669,6 @@ branch-protection:
                 contexts:
                   - "Semantic Pull Request"
                 strict: false
-        ti-community-bot:
-          branches:
-            master:
-              protect: true
-              required_status_checks:
-                contexts:
-                  - "Semantic Pull Request"
-                  - "codecov/project"
-                  - "pull-ti-community-bot-node10-unit-test"
-                  - "pull-ti-community-bot-node12-unit-test"
-                  - "pull-ti-community-bot-node14-unit-test"
-                strict: false
         ti-challenge-bot:
           branches:
             master:
@@ -640,21 +682,6 @@ branch-protection:
                   - "build (12.x, macos-latest)"
                   - "build (12.x, windows-latest)"
                   - "Semantic Pull Request"
-                strict: true
-        ti-sync-bot:
-          branches:
-            main:
-              protect: true
-              required_status_checks:
-                contexts:
-                  - "Test on node 10.x and ubuntu-latest"
-                  - "Test on node 12.x and ubuntu-latest"
-                  - "Test on node 14.x and ubuntu-latest"
-                  - "Test on node 10.x and macOS-latest"
-                  - "Test on node 12.x and macOS-latest"
-                  - "Test on node 14.x and macOS-latest"
-                  - "Semantic Pull Request"
-                  - "codecov/project"
                 strict: true
 in_repo_config:
   enabled:
@@ -695,10 +722,10 @@ plank:
         path_strategy: explicit
       gcs_credentials_secret: gcs-credentials
       utility_images:
-        clonerefs: gcr.io/k8s-prow/clonerefs:v20210514-64850e516d
-        entrypoint: gcr.io/k8s-prow/entrypoint:v20210514-64850e516d
-        initupload: gcr.io/k8s-prow/initupload:v20210514-64850e516d
-        sidecar: gcr.io/k8s-prow/sidecar:v20210514-64850e516d
+        clonerefs: gcr.io/k8s-prow/clonerefs:v20210521-0713522bd8
+        entrypoint: gcr.io/k8s-prow/entrypoint:v20210521-0713522bd8
+        initupload: gcr.io/k8s-prow/initupload:v20210521-0713522bd8
+        sidecar: gcr.io/k8s-prow/sidecar:v20210521-0713522bd8
 
 tide:
   sync_period: 2m
@@ -706,10 +733,9 @@ tide:
   merge_method:
     ti-community-infra/ti-challenge-bot: squash
     ti-community-infra/ti-community-bot: squash
-    ti-community-infra/ti-sync-bot: squash
     ti-community-infra/tichi: squash
     ti-community-infra/configs: squash
-    ti-community-infra/test-live: squash
+    ti-community-infra/test-prod: squash
     ti-community-infra/rfcs: squash
     ti-community-infra/devstats: squash
     ti-community-infra/devstats-dev-guide: squash
@@ -765,9 +791,8 @@ tide:
     - repos:
         - ti-community-infra/ti-challenge-bot
         - ti-community-infra/ti-community-bot
-        - ti-community-infra/ti-sync-bot
         - ti-community-infra/configs
-        - ti-community-infra/test-live
+        - ti-community-infra/test-prod
         - ti-community-infra/rfcs
         - ti-community-infra/devstats
         - ti-community-infra/devstats-dev-guide
@@ -820,6 +845,7 @@ tide:
       includedBranches:
         - release-4.0
         - release-5.0
+        - release-5.1
       labels:
         - status/can-merge
         - cherry-pick-approved
@@ -836,6 +862,15 @@ tide:
       ti-community-infra:
         skip-unknown-contexts: true
         from-branch-protection: true
+        repos:
+          ti-community-bot:
+            required-contexts:
+              - "Semantic Pull Request"
+              - "codecov/project"
+              - "pull-ti-community-bot-node10-unit-test"
+              - "pull-ti-community-bot-node12-unit-test"
+              - "pull-ti-community-bot-node14-unit-test"
+            skip-unknown-contexts: true
       tikv:
         repos:
           pd:
@@ -862,9 +897,13 @@ tide:
                 required-contexts:
                   - "statics"
                 skip-unknown-contexts: true
+              release-5.1:
+                required-contexts:
+                  - "statics"
+                skip-unknown-contexts: true
           tikv:
             # Notice: The following configuration takes effect for these branches:
-            # master / release-3.0 / release-3.1 / release-4.0 / release-5.0.
+            # master / release-3.0 / release-3.1 / release-4.0 / release-5.0 / release-5.1.
             required-contexts:
               - "DCO"
               - "idc-jenkins-ci-tikv/integration-common-test"
@@ -872,7 +911,6 @@ tide:
               - "idc-jenkins-ci-tikv/integration-ddl-test"
               - "idc-jenkins-ci-tikv/integration-copr-test"
               - "idc-jenkins-ci/test"
-              - "idc-jenkins-ci-tikv/check_release_note"
               - "tide"
             skip-unknown-contexts: true
       pingcap:
@@ -881,6 +919,7 @@ tide:
             from-branch-protection: true
           tidb-operator:
             from-branch-protection: true
+            skip-unknown-contexts: true
           tiup:
             from-branch-protection: true
             skip-unknown-contexts: false
@@ -913,7 +952,7 @@ tide:
             from-branch-protection: true
           tidb:
             # Notice: The following configuration takes effect for these branches:
-            # master / release-3.0 / release-4.0 / release-5.0.
+            # master / release-3.0 / release-4.0 / release-5.0/ release-5.1.
             required-contexts:
               - "idc-jenkins-ci-tidb/build"
               - "idc-jenkins-ci-tidb/check_dev"
@@ -942,6 +981,10 @@ tide:
                   - "idc-jenkins-ci-tidb/integration-copr-test"
                 skip-unknown-contexts: true
               release-5.0:
+                required-contexts:
+                  - "idc-jenkins-ci-tidb/integration-copr-test"
+                skip-unknown-contexts: true
+              release-5.1:
                 required-contexts:
                   - "idc-jenkins-ci-tidb/integration-copr-test"
                 skip-unknown-contexts: true
