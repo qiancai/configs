@@ -168,6 +168,18 @@ branch-protection:
                   - "jenkins-ci / pull-e2e-kind-serial"
                   - "license/cla"
                 strict: true
+            release-1.1:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - "pull (verify)"
+                  - "pull (build)"
+                  - "pull (test)"
+                  - "pull (e2e-examples)"
+                  - "jenkins-ci / pull-e2e-kind"
+                  - "jenkins-ci / pull-e2e-kind-serial"
+                  - "license/cla"
+                strict: true
         tiup:
           branches:
             master:
@@ -309,6 +321,14 @@ branch-protection:
                   - "license/cla"
                   - "tide"
                 strict: false
+            release-5.1:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - "ci/circleci: lint"
+                  - "license/cla"
+                  - "tide"
+                strict: false                
         docs-cn:
           branches:
             master:
@@ -359,6 +379,14 @@ branch-protection:
                   - "license/cla"
                   - "tide"
                 strict: false
+            release-5.1:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - "ci/circleci: lint"
+                  - "license/cla"
+                  - "tide"
+                strict: false    
         docs-dm:
           branches:
             master:
@@ -528,6 +556,48 @@ branch-protection:
                   - 'idc-jenkins-ci-ticdc/unit-test'
                   - 'idc-jenkins-ci/leak-test'
                   - 'license/cla'
+                strict: true
+        tidb-binlog:
+          branches:
+            master:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - 'idc-jenkins-ci-binlog/build'
+                  - 'idc-jenkins-ci-binlog/check'
+                  - 'idc-jenkins-ci-tidb-binlog/integration-test'
+                  - 'idc-jenkins-ci-tidb-binlog/check_release_note'
+                  - 'idc-jenkins-ci-tidb-binlog/unit-test'
+                strict: true
+            release-4.0:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - 'idc-jenkins-ci-binlog/build'
+                  - 'idc-jenkins-ci-binlog/check'
+                  - 'idc-jenkins-ci-tidb-binlog/integration-test'
+                  - 'idc-jenkins-ci-tidb-binlog/check_release_note'
+                  - 'idc-jenkins-ci-tidb-binlog/unit-test'
+                strict: true
+            release-5.0:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - 'idc-jenkins-ci-binlog/build'
+                  - 'idc-jenkins-ci-binlog/check'
+                  - 'idc-jenkins-ci-tidb-binlog/integration-test'
+                  - 'idc-jenkins-ci-tidb-binlog/check_release_note'
+                  - 'idc-jenkins-ci-tidb-binlog/unit-test'
+                strict: true
+            release-5.1:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - 'idc-jenkins-ci-binlog/build'
+                  - 'idc-jenkins-ci-binlog/check'
+                  - 'idc-jenkins-ci-tidb-binlog/integration-test'
+                  - 'idc-jenkins-ci-tidb-binlog/check_release_note'
+                  - 'idc-jenkins-ci-tidb-binlog/unit-test'
                 strict: true
         br:
           branches:
@@ -756,6 +826,7 @@ tide:
     pingcap/tidb-tools: squash
     pingcap/ticdc: squash
     pingcap/br: squash
+    pingcap/tidb-binlog: squash
     chaos-mesh/chaos-mesh: squash
     chaos-mesh/website: squash
     chaos-mesh/website-zh: squash
@@ -776,6 +847,10 @@ tide:
 
   pr_status_base_urls:
     "*": https://prow.tidb.io/pr
+
+  squash_label: tide/merge-method-squash
+  rebase_label: tide/merge-method-rebase
+  merge_label: tide/merge-method-merge
 
   queries:
     - repos:
@@ -824,6 +899,7 @@ tide:
         - pingcap/tidb-tools
         - pingcap/br
         - pingcap/ticdc
+        - pingcap/tidb-binlog
       includedBranches:
         - master
       labels:
@@ -842,6 +918,7 @@ tide:
         - pingcap/tidb-tools
         - pingcap/br
         - pingcap/ticdc
+        - pingcap/tidb-binlog
       includedBranches:
         - release-4.0
         - release-5.0
@@ -876,9 +953,6 @@ tide:
           pd:
             required-contexts:
               - "DCO"
-              - "idc-jenkins-ci-pd/integration-common-test"
-              - "idc-jenkins-ci-pd/integration-compatibility-test"
-              - "idc-jenkins-ci-pd/integration-ddl-test"
               - "idc-jenkins-ci/build"
               - "idc-jenkins-ci/test"
             skip-unknown-contexts: true
@@ -906,10 +980,7 @@ tide:
             # master / release-3.0 / release-3.1 / release-4.0 / release-5.0 / release-5.1.
             required-contexts:
               - "DCO"
-              - "idc-jenkins-ci-tikv/integration-common-test"
-              - "idc-jenkins-ci-tikv/integration-compatibility-test"
-              - "idc-jenkins-ci-tikv/integration-ddl-test"
-              - "idc-jenkins-ci-tikv/integration-copr-test"
+              - "idc-jenkins-ci-tikv/build"
               - "idc-jenkins-ci/test"
               - "tide"
             skip-unknown-contexts: true
@@ -950,6 +1021,9 @@ tide:
           br:
             skip-unknown-contexts: true
             from-branch-protection: true
+          tidb-binlog:
+            skip-unknown-contexts: true
+            from-branch-protection: true
           tidb:
             # Notice: The following configuration takes effect for these branches:
             # master / release-3.0 / release-4.0 / release-5.0/ release-5.1.
@@ -960,34 +1034,9 @@ tide:
               - "idc-jenkins-ci-tidb/check_release_note"
               - "license/cla"
               - "idc-jenkins-ci-tidb/check_title"
-              - "idc-jenkins-ci-tidb/common-test"
-              - "idc-jenkins-ci-tidb/integration-common-test"
-              - "idc-jenkins-ci-tidb/integration-compatibility-test"
-              - "idc-jenkins-ci-tidb/mybatis-test"
-              - "idc-jenkins-ci-tidb/sqllogic-test-1"
-              - "idc-jenkins-ci-tidb/sqllogic-test-2"
-              - "idc-jenkins-ci-tidb/tics-test"
               - "idc-jenkins-ci-tidb/unit-test"
               - "tide"
             skip-unknown-contexts: true
-            branches:
-              master:
-                required-contexts:
-                  - "idc-jenkins-ci-tidb/integration-copr-test"
-                  - "idc-jenkins-ci-tidb/integration-ddl-test"
-                skip-unknown-contexts: true
-              release-4.0:
-                required-contexts:
-                  - "idc-jenkins-ci-tidb/integration-copr-test"
-                skip-unknown-contexts: true
-              release-5.0:
-                required-contexts:
-                  - "idc-jenkins-ci-tidb/integration-copr-test"
-                skip-unknown-contexts: true
-              release-5.1:
-                required-contexts:
-                  - "idc-jenkins-ci-tidb/integration-copr-test"
-                skip-unknown-contexts: true
       chaos-mesh:
         repos:
           chaos-mesh:
