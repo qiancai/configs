@@ -168,6 +168,18 @@ branch-protection:
                   - "jenkins-ci / pull-e2e-kind-serial"
                   - "license/cla"
                 strict: true
+            release-1.2:
+              protect: true
+              required_status_checks:
+                contexts:
+                  - "pull (verify)"
+                  - "pull (build)"
+                  - "pull (test)"
+                  - "pull (e2e-examples)"
+                  - "jenkins-ci / pull-e2e-kind"
+                  - "jenkins-ci / pull-e2e-kind-serial"
+                  - "license/cla"
+                strict: true
             release-1.1:
               protect: true
               required_status_checks:
@@ -609,7 +621,7 @@ branch-protection:
                   - 'idc-jenkins-ci-br/check_release_note'
                   - 'idc-jenkins-ci-br/integration_test'
                   - 'license/cla'
-                strict: false
+                strict: true
             release-4.0:
               protect: true
               required_status_checks:
@@ -618,7 +630,7 @@ branch-protection:
                   - 'idc-jenkins-ci-br/check_release_note'
                   - 'idc-jenkins-ci-br/integration_test'
                   - 'license/cla'
-                strict: false
+                strict: true
             release-5.0:
               protect: true
               required_status_checks:
@@ -627,7 +639,7 @@ branch-protection:
                   - 'idc-jenkins-ci-br/check_release_note'
                   - 'idc-jenkins-ci-br/integration_test'
                   - 'license/cla'
-                strict: false
+                strict: true
             release-5.1:
               protect: true
               required_status_checks:
@@ -636,7 +648,7 @@ branch-protection:
                   - 'idc-jenkins-ci-br/check_release_note'
                   - 'idc-jenkins-ci-br/integration_test'
                   - 'license/cla'
-                strict: false
+                strict: true
     chaos-mesh:
       repos:
         chaos-mesh:
@@ -702,6 +714,7 @@ branch-protection:
                   - "lint"
                   - "Semantic Pull Request"
                   - "codecov/project"
+                  - "pull-tichi-rerere"
                   - "pull-tichi-unit-test"
                   - "pull-tichi-web-node10-lint"
                   - "pull-tichi-web-node12-lint"

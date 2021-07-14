@@ -102,6 +102,8 @@ ti-community-owners:
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
     branches:
+      release-1.2:
+        default_require_lgtm: 1
       release-1.1:
         default_require_lgtm: 1
   - repos:
@@ -165,7 +167,7 @@ ti-community-owners:
       release-5.0:
         default_require_lgtm: 1
       release-5.1:
-        default_require_lgtm: 1  
+        default_require_lgtm: 1
   - repos:
       - pingcap/docs-dm
     default_require_lgtm: 2
@@ -555,26 +557,16 @@ ti-community-label:
       - subject
       - type
     additional_labels:
-      - 'bug-from-poc'
-      - 'bug-from-user'
-      - 'contribution-welcome'
-      - 'dba-test'
-      - 'dependencies'
-      - 'documentation'
       - 'duplicate'
-      - 'enhancement'
-      - 'feature-request'
-      - 'good-first-issue'
-      - 'hacktoberfest'
-      - 'internal-test'
+      - 'bug-from-internal-test'
+      - 'bug-from-user'
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
       - 'needs-cherry-pick-release-5.1'
-      - 'ptal'
       - 'question'
       - 'release-blocker'
-      - 'since-5.0'
       - 'wontfix'
+      - 'require-LGT1'
       - 'require-LGT3'
     exclude_labels:
       - status/can-merge
@@ -676,13 +668,6 @@ ti-community-autoresponder:
           It seems you want to merge this PR, I will help you trigger all the tests:
 
           /run-all-tests
-      - regex: "(?i)^/LGTM"
-        message: |
-          Please use GitHub review feature instead of `/lgtm [cancel]` when you want to submit review to the pull request.
-          For how to use GitHub review feature, see also [this document](https://docs.github.com/en/github/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews) provided by GitHub.
-
-          For the reason we drop support to the commands, see also [this page](https://book.prow.tidb.io/#/en/plugins/lgtm?id=why-does-lgtm-cancel-take-no-effect-anymore).
-          This reply is being used as a temporary reply during the migration of review process and will be removed on July 1st.
   - repos:
       - tikv/tikv
     auto_responds:
@@ -695,41 +680,6 @@ ti-community-autoresponder:
           You only need to trigger `/merge` once, and if the CI test fails, you just re-trigger the test that failed and the bot will merge the PR for you after the CI passes.
 
           If you have any questions about the PR merge process, please refer to [pr process](https://book.prow.tidb.io/#/en/workflows/pr).
-      - regex: "(?i)^/LGTM"
-        message: |
-          Please use GitHub review feature instead of `/lgtm [cancel]` when you want to submit review to the pull request.
-          For how to use GitHub review feature, see also [this document](https://docs.github.com/en/github/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews) provided by GitHub.
-
-          For the reason we drop support to the commands, see also [this page](https://book.prow.tidb.io/#/en/plugins/lgtm?id=why-does-lgtm-cancel-take-no-effect-anymore).
-          This reply is being used as a temporary reply during the migration of review process and will be removed on July 1st.
-  - repos:
-      - tikv/community
-      - pingcap/tidb-dashboard
-      - pingcap/community
-      - pingcap/tidb-operator
-      - pingcap/tiup
-      - pingcap/tidb
-      - pingcap/docs
-      - pingcap/docs-cn
-      - pingcap/docs-dm
-      - pingcap/docs-tidb-operator
-      - pingcap/dumpling
-      - pingcap/dm
-      - pingcap/tidb-tools
-      - pingcap/ticdc
-      - pingcap/br
-      - pingcap/tidb-binlog
-      - chaos-mesh/chaos-mesh
-      - chaos-mesh/website
-      - chaos-mesh/website-zh
-    auto_responds:
-      - regex: "(?i)^/LGTM"
-        message: |
-          Please use GitHub review feature instead of `/lgtm [cancel]` when you want to submit review to the pull request.
-          For how to use GitHub review feature, see also [this document](https://docs.github.com/en/github/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/approving-a-pull-request-with-required-reviews) provided by GitHub.
-
-          For the reason we drop support to the commands, see also [this page](https://book.prow.tidb.io/#/en/plugins/lgtm?id=why-does-lgtm-cancel-take-no-effect-anymore).
-          This reply is being used as a temporary reply during the migration of review process and will be removed on July 1st.
 
 ti-community-blunderbuss:
   - repos:
@@ -907,6 +857,7 @@ ti-community-tars:
       - tikv/tikv
       - pingcap/tidb
       - pingcap/ticdc
+      - pingcap/br
       - pingcap/tidb-binlog
       - chaos-mesh/chaos-mesh
     only_when_label: "status/can-merge"
@@ -1037,7 +988,6 @@ ti-community-cherrypicker:
       - status/LGT3
   - repos:
       - tikv/pd
-      - pingcap/ticdc
       - pingcap/dm
       - pingcap/br
       - pingcap/tidb-binlog
@@ -1050,6 +1000,12 @@ ti-community-cherrypicker:
       - status/LGT1
       - status/LGT2
       - status/LGT3
+  - repos:
+      - pingcap/ticdc
+    label_prefix: needs-cherry-pick-
+    picked_label_prefix: type/cherry-pick-for-
+    allow_all: true
+    create_issue_on_conflict: false
   - repos:
       - pingcap/docs-cn
       - pingcap/docs
