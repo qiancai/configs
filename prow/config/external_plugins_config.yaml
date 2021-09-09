@@ -31,6 +31,8 @@ ti-community-lgtm:
       - pingcap/br
       - pingcap/tidb-binlog
       - pingcap/parser
+      - pingcap/tics
+      - pingcap/tiflash
       - chaos-mesh/chaos-mesh
       - chaos-mesh/website
       - chaos-mesh/website-zh
@@ -65,6 +67,8 @@ ti-community-merge:
       - pingcap/br
       - pingcap/tidb-binlog
       - pingcap/parser
+      - pingcap/tics
+      - pingcap/tiflash
       - chaos-mesh/chaos-mesh
       - chaos-mesh/website
       - chaos-mesh/website-zh
@@ -82,8 +86,13 @@ ti-community-owners:
       - ti-community-infra/devstats
       - ti-community-infra/devstats-dev-guide
     default_require_lgtm: 1
-    default_sig_name: community-infra
     sig_endpoint: https://bots.tidb.io/ti-community-bot
+    use_github_team: true
+    committer_teams:
+      - community-infra-maintainers
+      - community-infra-committers
+    reviewer_teams:
+      - community-infra-reviewers
   - repos:
       - tikv/pd
     use_github_permission: true
@@ -91,28 +100,39 @@ ti-community-owners:
     require_lgtm_label_prefix: require-LGT
   - repos:
       - pingcap/tidb-dashboard
-    default_sig_name: diagnosis
     default_require_lgtm: 1
-    trusted_teams:
-      - maintainers
+    use_github_team: true
+    committer_teams:
+      - diagnostic-maintainers
+      - diagnostic-committers
+    reviewer_teams:
+      - diagnostic-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
   - repos:
       - pingcap/tidb-operator
-    default_sig_name: k8s
-    trusted_teams:
-      - maintainers
+    use_github_team: true
+    committer_teams:
+      - kubernetes-maintainers
+      - kubernetes-committers
+    reviewer_teams:
+      - kubernetes-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
     branches:
       release-1.2:
+        use_github_team: true
         default_require_lgtm: 1
       release-1.1:
+        use_github_team: true
         default_require_lgtm: 1
   - repos:
       - pingcap/tiup
-    default_sig_name: tiup
-    trusted_teams:
-      - maintainers
+    use_github_team: true
+    committer_teams:
+      - tiup-maintainers
+      - tiup-committers
+    reviewer_teams:
+      - tiup-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     default_require_lgtm: 1
     require_lgtm_label_prefix: require-LGT
@@ -123,25 +143,50 @@ ti-community-owners:
     require_lgtm_label_prefix: require-LGT
   - repos:
       - pingcap/tidb
-    trusted_teams:
-      - tidb-maintainer
+    use_github_team: true
+    committer_teams:
+      - tidb-maintainers
+      - tidb-committers
+    reviewer_teams:
+      - tidb-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
     branches:
       release-2.1:
-        trusted_teams:
+        use_github_team: true
+        committer_teams:
+          - tidb-maintainers
+          - tidb-committers
           - qa-release-merge
       release-3.0:
-        trusted_teams:
+        use_github_team: true
+        committer_teams:
+          - tidb-maintainers
+          - tidb-committers
           - qa-release-merge
       release-4.0:
-        trusted_teams:
+        use_github_team: true
+        committer_teams:
+          - tidb-maintainers
+          - tidb-committers
           - qa-release-merge
       release-5.0:
-        trusted_teams:
+        use_github_team: true
+        committer_teams:
+          - tidb-maintainers
+          - tidb-committers
           - qa-release-merge
       release-5.1:
-        trusted_teams:
+        use_github_team: true
+        committer_teams:
+          - tidb-maintainers
+          - tidb-committers
+          - qa-release-merge
+      release-5.2:
+        use_github_team: true
+        committer_teams:
+          - tidb-maintainers
+          - tidb-committers
           - qa-release-merge
   - repos:
       - tikv/community
@@ -154,49 +199,85 @@ ti-community-owners:
       - pingcap/docs
       - pingcap/docs-cn
     default_require_lgtm: 2
-    default_sig_name: docs
+    use_github_team: true
+    committer_teams:
+      - docs-maintainers
+      - docs-committers
+    reviewer_teams:
+      - docs-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
     branches:
       release-2.1:
+        use_github_team: true
         default_require_lgtm: 1
       release-3.0:
+        use_github_team: true
         default_require_lgtm: 1
       release-3.1:
+        use_github_team: true
         default_require_lgtm: 1
       release-4.0:
+        use_github_team: true
         default_require_lgtm: 1
       release-5.0:
+        use_github_team: true
         default_require_lgtm: 1
       release-5.1:
+        use_github_team: true
         default_require_lgtm: 1
+      release-5.2:
+        use_github_team: true
+        default_require_lgtm: 1        
   - repos:
       - pingcap/docs-dm
     default_require_lgtm: 2
-    default_sig_name: docs
+    use_github_team: true
+    committer_teams:
+      - docs-maintainers
+      - docs-committers
+    reviewer_teams:
+      - docs-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
     branches:
       release-1.0:
+        use_github_team: true
         default_require_lgtm: 1
       release-2.0:
+        use_github_team: true
         default_require_lgtm: 1
   - repos:
       - pingcap/docs-tidb-operator
     default_require_lgtm: 2
-    default_sig_name: docs
+    use_github_team: true
+    committer_teams:
+      - docs-maintainers
+      - docs-committers
+    reviewer_teams:
+      - docs-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
     branches:
       release-1.0:
+        use_github_team: true
         default_require_lgtm: 1
       release-1.1:
+        use_github_team: true
         default_require_lgtm: 1
+      release-1.2:
+        use_github_team: true
+        default_require_lgtm: 1        
   - repos:
       - pingcap/dumpling
       - pingcap/tidb-tools
     default_require_lgtm: 1
-    default_sig_name: migrate
+    use_github_team: true
+    committer_teams:
+      - migration-maintainers
+      - migration-committers
+    reviewer_teams:
+      - migration-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
   - repos:
@@ -205,13 +286,30 @@ ti-community-owners:
       - pingcap/br
       - pingcap/tidb-binlog
     default_require_lgtm: 2
-    default_sig_name: migrate
+    use_github_team: true
+    committer_teams:
+      - migration-maintainers
+      - migration-committers
+    reviewer_teams:
+      - migration-reviewers
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
   - repos:
       - pingcap/parser
     default_require_lgtm: 2
-    default_sig_name: sql-infra
+    use_github_team: true
+    committer_teams:
+      - tidb-maintainers
+      - tidb-committers
+    reviewer_teams:
+      - tidb-reviewers
+    sig_endpoint: https://bots.tidb.io/ti-community-bot
+    require_lgtm_label_prefix: require-LGT
+  - repos:
+      - pingcap/tics
+      - pingcap/tiflash
+    default_require_lgtm: 1
+    use_github_permission: true
     sig_endpoint: https://bots.tidb.io/ti-community-bot
     require_lgtm_label_prefix: require-LGT
   - repos:
@@ -287,6 +385,7 @@ ti-community-label:
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
       - 'needs-cherry-pick-release-5.1'
+      - 'needs-cherry-pick-release-5.2'
       - 'release-note'
       - 'require-LGT1'
       - 'wontfix'
@@ -314,6 +413,7 @@ ti-community-label:
       - 'needs-cherry-pick-4.0'
       - 'needs-cherry-pick-5.0'
       - 'needs-cherry-pick-5.1'
+      - 'needs-cherry-pick-5.2'
       - 'wontfix'
       - 'do-not-merge/cherry-pick-not-approved'
     exclude_labels:
@@ -348,6 +448,7 @@ ti-community-label:
       - 'needs-cherry-pick-4.0'
       - 'needs-cherry-pick-5.0'
       - 'needs-cherry-pick-5.1'
+      - 'needs-cherry-pick-5.2'
       - 'proposal'
       - 'release-note'
       - 'require-LGT3'
@@ -383,6 +484,7 @@ ti-community-label:
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
       - 'needs-cherry-pick-release-5.1'
+      - 'needs-cherry-pick-release-5.2'
       - 'needs-cherry-pick-master'
       - 'question'
       - 'require-LGT1'
@@ -392,6 +494,7 @@ ti-community-label:
       - 'v4.0'
       - 'v5.0'
       - 'v5.1'
+      - 'v5.2'
       - 'for-future-release'
       - 'requires-version-specific-changes'
       - 'website'
@@ -452,6 +555,7 @@ ti-community-label:
       - 'help-wanted'
       - 'needs-cherry-pick-release-1.0'
       - 'needs-cherry-pick-release-1.1'
+      - 'needs-cherry-pick-release-1.2'      
       - 'needs-cherry-pick-master'
       - 'question'
       - 'require-LGT1'
@@ -548,6 +652,7 @@ ti-community-label:
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
       - 'needs-cherry-pick-release-5.1'
+      - 'needs-cherry-pick-release-5.2'
       - 'question'
       - 'release-blocker'
       - 'wontfix'
@@ -571,6 +676,7 @@ ti-community-label:
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
       - 'needs-cherry-pick-release-5.1'
+      - 'needs-cherry-pick-release-5.2'
       - 'question'
       - 'release-blocker'
       - 'wontfix'
@@ -586,11 +692,6 @@ ti-community-label:
       - status
       - type
     additional_labels:
-      - 'already-cherry-pick-2.1'
-      - 'already-cherry-pick-3.0'
-      - 'already-cherry-pick-3.1'
-      - 'already-cherry-pick-4.0'
-      - 'already-cherry-pick-5.0'
       - 'contribution'
       - 'duplicate'
       - 'feature-request'
@@ -604,6 +705,7 @@ ti-community-label:
       - 'needs-cherry-pick-release-4.0'
       - 'needs-cherry-pick-release-5.0'
       - 'needs-cherry-pick-release-5.1'
+      - 'needs-cherry-pick-release-5.2'
       - 'p0'
       - 'p1'
       - 'p2'
@@ -625,14 +727,75 @@ ti-community-label:
       - 'for new contributors'
       - 'help wanted'
       - 'hptc'
-      - 'needs-cherry-pick-2.1'
-      - 'needs-cherry-pick-3.0'
-      - 'needs-cherry-pick-3.1'
-      - 'needs-cherry-pick-4.0'
-      - 'needs-cherry-pick-5.0'
-      - 'needs-cherry-pick-5.1'
+      - 'needs-cherry-pick-release-2.1'
+      - 'needs-cherry-pick-release-3.0'
+      - 'needs-cherry-pick-release-3.1'
+      - 'needs-cherry-pick-release-4.0'
+      - 'needs-cherry-pick-release-5.0'
+      - 'needs-cherry-pick-release-5.1'
+      - 'needs-cherry-pick-release-5.2'
       - 'needs-rebase'
       - 'question'
+    exclude_labels:
+      - status/can-merge
+  - repos:
+      - pingcap/tics
+    prefixes:
+      - priority
+      - component
+      - severity
+      - status
+      - type
+    additional_labels:
+      - 'duplicate'
+      - 'first-time-contributor'
+      - 'good first issue'
+      - 'help wanted'
+      - 'invalid'
+      - 'question'
+      - 'wontfix'
+      - 'make-local-great-again'
+      - 'needs-cherry-pick-release-3.1'
+      - 'needs-cherry-pick-release-4.0'
+      - 'needs-cherry-pick-release-5.0-rc'
+      - 'needs-cherry-pick-release-5.0'
+      - 'needs-cherry-pick-release-5.1'
+      - 'needs-cherry-pick-release-5.2'
+      - 'needs-rebase'
+    exclude_labels:
+      - status/can-merge
+  - repos:
+      - pingcap/tiflash
+    prefixes:
+      - status
+    additional_labels:
+      - 'bug'
+      - 'build or publish bug'
+      - 'discussion'
+      - 'doc'
+      - 'duplicate'
+      - 'enhancement'
+      - 'first-time-contributor'
+      - 'future'
+      - 'invalid'
+      - 'later'
+      - 'minor bug'
+      - 'needs-cherry-pick-release-3.1'
+      - 'needs-cherry-pick-release-4.0'
+      - 'needs-cherry-pick-release-5.0'
+      - 'needs-cherry-pick-release-5.1'
+      - 'needs-cherry-pick-release-5.2'
+      - 'optimization'
+      - 'P0'
+      - 'P1'
+      - 'P2'
+      - 'pushdown'
+      - 'raft'
+      - 'spark plan'
+      - 'test'
+      - 'testing'
+      - 'wontfix'
+      - 'needs-rebase'
     exclude_labels:
       - status/can-merge
   - repos:
@@ -660,6 +823,7 @@ ti-community-label:
       - 'needs-cherry-pick-1.0'
       - 'needs-cherry-pick-1.1'
       - 'needs-cherry-pick-1.2'
+      - 'needs-cherry-pick-2.0'
       - 'website'
       - 'require-LGT3'
     exclude_labels:
@@ -702,6 +866,8 @@ ti-community-autoresponder:
           /run-all-tests
   - repos:
       - tikv/tikv
+      - pingcap/tics
+      - pingcap/tiflash
     auto_responds:
       - regex: "(?mi)^/merge\\s*$"
         message: |
@@ -726,10 +892,12 @@ ti-community-blunderbuss:
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
     max_request_count: 2
     exclude_reviewers:
+      # Inactive committers
+      - tisonkun
       # Bots
       - ti-chi-bot
-      # Inactive committers
-      - hi-rustin
+      - mini-bot
+      - mini-bot-2
   - repos:
       - tikv/pd
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
@@ -819,12 +987,12 @@ ti-community-blunderbuss:
     include_reviewers:
       - overvenus
       - amyangfei
-      - leoppro
       - liuzix
       - lonng
       - JinLingChristopher
       - ben1009
       - asddongmen
+      - hi-rustin
   - repos:
       - pingcap/br
     pull_owners_endpoint: https://prow.tidb.io/ti-community-owners
@@ -891,12 +1059,16 @@ ti-community-tars:
       - pingcap/ticdc
       - pingcap/br
       - pingcap/tidb-binlog
+      - pingcap/tics
+      - pingcap/tiflash
       - chaos-mesh/chaos-mesh
     only_when_label: "status/can-merge"
     exclude_labels:
       - needs-rebase
       - do-not-merge/hold
+      - do-not-merge/blocked-paths
       - do-not-merge/work-in-progress
+      - do-not-merge/release-note-label-needed
       - do-not-merge/cherry-pick-not-approved
     message: |
       Your PR was out of date, I have automatically updated it for you.
@@ -919,17 +1091,55 @@ ti-community-tars:
     exclude_labels:
       - needs-rebase
       - do-not-merge/hold
+      - do-not-merge/blocked-paths
       - do-not-merge/work-in-progress
+      - do-not-merge/release-note-label-needed
       - do-not-merge/cherry-pick-not-approved
     message: |
       Your PR was out of date, I have automatically updated it for you.
 
 ti-community-label-blocker:
   - repos:
+      - pingcap/tidb
+    block_labels:
+      - regex: "^status/LGT[\\d]+$"
+        actions:
+          - labeled
+          - unlabeled
+        trusted_users:
+          - ti-chi-bot
+      - regex: "^status/can-merge$"
+        actions:
+          - labeled
+          - unlabeled
+        trusted_users:
+          - ti-chi-bot
+      - regex: "^cherry-pick-approved$"
+        actions:
+          - labeled
+          - unlabeled
+        trusted_teams:
+          - qa-release-merge
+        trusted_users:
+          - ti-chi-bot
+      - regex: "^do-not-merge/blocked-paths$"
+        actions:
+          - labeled
+          - unlabeled
+        trusted_users:
+          - qw4990
+          - bb7133
+          - XuHuaiyu
+          - cfzjywxk
+          - morgo
+          - ti-chi-bot
+        message: Illegal modification of do-not-merge/blocked-paths label.
+  - repos:
       - tikv/tikv
       - tikv/pd
-      - pingcap/tidb
       - pingcap/parser
+      - pingcap/tics
+      - pingcap/tiflash
       - pingcap/docs
       - pingcap/docs-cn
       - pingcap/docs-dm
@@ -965,9 +1175,9 @@ ti-community-label-blocker:
   - repos:
       - pingcap/dumpling
       - pingcap/dm
-      - pingcap/tidb-tools
       - pingcap/ticdc
       - pingcap/br
+      - pingcap/tidb-tools
       - pingcap/tidb-binlog
     block_labels:
       - regex: "^status/LGT[\\d]+$"
@@ -991,6 +1201,7 @@ ti-community-label-blocker:
         trusted_users:
           - ti-chi-bot
           - lonng
+          - nongfushanquan
 
 ti-community-contribution:
   - repos:
@@ -1027,6 +1238,8 @@ ti-community-cherrypicker:
       - pingcap/br
       - pingcap/tidb-binlog
       - pingcap/parser
+      - pingcap/tics
+      - pingcap/tiflash
     label_prefix: needs-cherry-pick-
     picked_label_prefix: type/cherry-pick-for-
     allow_all: true
@@ -1042,6 +1255,9 @@ ti-community-cherrypicker:
     picked_label_prefix: type/cherry-pick-for-
     allow_all: true
     create_issue_on_conflict: false
+    excludeLabels:
+      - status/can-merge
+      - status/ptal
   - repos:
       - pingcap/docs-cn
       - pingcap/docs

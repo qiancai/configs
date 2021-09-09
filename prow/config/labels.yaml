@@ -1509,6 +1509,13 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: needs-cherry-pick-release-5.2
+        color: "000000"
+        description: Should cherry pick this PR to release-5.2 branch.
+        target: prs
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone        
       - name: needs-cherry-pick-master
         color: "000000"
         description: Should cherry pick this PR to master branch.
@@ -1680,6 +1687,13 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: type/cherry-pick-for-release-5.2
+        color: 9ad662
+        description: This PR is cherry-picked to release-5.2 from a source PR.
+        target: prs
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone        
       - name: type/bug-fix
         color: d4c5f9
         description: Fixes typos, wrong format, or other wrong or inaccurate document content.
@@ -1750,6 +1764,13 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: v5.2
+        color: 149be3
+        description: "This PR/issue applies to TiDB v5.2."
+        target: both
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone        
       - name: sig/diagnosis
         color: "e99695"
         description: Indicates that the Issue or PR belongs to the diagnosis SIG.
@@ -1767,6 +1788,13 @@ repos:
       - name: sig/migrate
         color: "e99695"
         description: Indicates that the Issue or PR belongs to the migrate SIG.
+        target: both
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone
+      - name: sig/bigdata
+        color: "e99695"
+        description: Indicates that the Issue or PR belongs to the bigdata SIG.
         target: both
         prowPlugin: ti-community-label
         isExternalPlugin: true
@@ -1972,6 +2000,13 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: needs-cherry-pick-release-5.2
+        color: "000000"
+        description: Should cherry pick this PR to release-5.2 branch.
+        target: prs
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone 
       - name: needs-cherry-pick-master
         color: "000000"
         description: Should cherry pick this PR to master branch.
@@ -2150,6 +2185,13 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: type/cherry-pick-for-release-5.2
+        color: 9ed662
+        description: This PR is cherry-picked to release-5.2 from a source PR.
+        target: prs
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone  
       - name: type/bug-fix
         color: d4c5f9
         description: Fixes typos, wrong format, or other wrong or inaccurate document content.
@@ -2220,6 +2262,13 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: v5.2
+        color: 149be3
+        description: "This PR/issue applies to TiDB v5.2."
+        target: both
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone         
       - name: sig/diagnosis
         color: "e99695"
         description: Indicates that the Issue or PR belongs to the diagnosis SIG.
@@ -2237,6 +2286,13 @@ repos:
       - name: sig/migrate
         color: "e99695"
         description: Indicates that the Issue or PR belongs to the migrate SIG.
+        target: both
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone
+      - name: sig/bigdata
+        color: "e99695"
+        description: Indicates that the Issue or PR belongs to the bigdata SIG.
         target: both
         prowPlugin: ti-community-label
         isExternalPlugin: true
@@ -2622,6 +2678,13 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: sig/bigdata
+        color: "e99695"
+        description: Indicates that the Issue or PR belongs to the bigdata SIG.
+        target: both
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone
       - name: sig/planner
         color: "e99695"
         description: Indicates that the Issue or PR belongs to the planner SIG.
@@ -2789,6 +2852,15 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: needs-cherry-pick-release-1.2
+        color: "000000"
+        description: Should cherry pick this PR to release-1.2 branch.
+        previously:
+          - name: needs-cherry-pick-1.2
+        target: prs
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone
       - name: needs-cherry-pick-master
         color: "000000"
         description: Should cherry pick this PR to master branch.
@@ -2940,6 +3012,15 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
+      - name: type/cherry-pick-for-release-1.2
+        color: 9ad662
+        description: This PR is cherry-picked to release-1.2 from a source PR.
+        previously:
+          - name: type/1.2-cherry-pick
+        target: prs
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone        
       - name: type/bug-fix
         color: d4c5f9
         description: Fixes typos or wrong format.
@@ -3020,6 +3101,13 @@ repos:
       - name: sig/migrate
         color: "e99695"
         description: Indicates that the Issue or PR belongs to the migrate SIG.
+        target: both
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone
+      - name: sig/bigdata
+        color: "e99695"
+        description: Indicates that the Issue or PR belongs to the bigdata SIG.
         target: both
         prowPlugin: ti-community-label
         isExternalPlugin: true
@@ -3320,17 +3408,16 @@ repos:
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
-      - name: needs-cherry-pick-release-5.0-rc
+      - name: needs-cherry-pick-release-5.1
         color: "000000"
-        description: Should cherry pick this PR to release-5.0-rc branch.
+        description: Should cherry pick this PR to release-5.1 branch.
         target: prs
         prowPlugin: ti-community-label
         isExternalPlugin: true
         addedBy: anyone
-        deleteAfter: 2021-07-10T15:04:05Z
-      - name: needs-cherry-pick-release-5.1
+      - name: needs-cherry-pick-release-5.2
         color: "000000"
-        description: Should cherry pick this PR to release-5.1 branch.
+        description: Should cherry pick this PR to release-5.2 branch.
         target: prs
         prowPlugin: ti-community-label
         isExternalPlugin: true
@@ -3513,6 +3600,13 @@ repos:
       - name: type/cherry-pick-for-release-5.1
         color: 9ad662
         description: This PR is cherry-picked to release-5.1 from a source PR.
+        target: prs
+        prowPlugin: ti-community-label
+        isExternalPlugin: true
+        addedBy: anyone
+      - name: type/cherry-pick-for-release-5.2
+        color: 9ad662
+        description: This PR is cherry-picked to release-5.2 from a source PR.
         target: prs
         prowPlugin: ti-community-label
         isExternalPlugin: true
